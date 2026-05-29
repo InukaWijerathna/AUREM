@@ -1,0 +1,36 @@
+const jwt = require('jsonwebtoken');
+
+const generateAccessToken = (id) =>
+  jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE || '15m' });
+
+const generateRefreshToken = (id) =>
+  jwt.sign({ id }, process.env.JWT_REFRESH_SECRET, {
+    expiresIn: process.env.JWT_REFRESH_EXPIRE || '7d',
+  });
+
+const setTokenCookies = (res, accessToken, refreshToken) => {
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  res.cookie('accessToken', accessToken, {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax',
+    maxAge: 15 * 60 * 1000, // 15 minutes
+  });
+
+  res.cookie('refreshToken', refreshToken, {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax',
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  });
+};
+
+const clearTokenCookies = (res) => {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const opts = { httpOnly: true, secure: isProduction, sameSite: isProduction ? 'none' : 'lax' };
+  res.clearCookie('accessToken', opts);
+  res.clearCookie('refreshToken', opts);
+};
+
+module.exports = { generateAccessToken, generateRefreshToken, setTokenCookies, clearTokenCookies };
