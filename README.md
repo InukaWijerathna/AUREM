@@ -1,6 +1,10 @@
-# AUREM | Curated Luxury E-Commerce
+<div align="center">
+  <img src="frontend/src/assets/logo.png" alt="AUREM" width="140" />
 
-![Banner](https://img.shields.io/badge/AUREM-Curated_Luxury-7A5C28?style=for-the-badge&logo=shopify&logoColor=F5EDD8)
+  # AUREM | Curated Luxury E-Commerce
+
+  ![Banner](https://img.shields.io/badge/AUREM-Curated_Luxury-7A5C28?style=for-the-badge&logo=shopify&logoColor=F5EDD8)
+</div>
 
 **AUREM** is a full-stack luxury e-commerce platform for curated high-end goods across six categories — Timepieces, Jewellery, Leather Goods, Accessories, Fragrance, and Gifting. Built with a MERN stack and deployed on Vercel.
 
