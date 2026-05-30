@@ -13,7 +13,7 @@ export default function OrderSuccessPage() {
 
   return (
     <>
-      <Helmet><title>Order Confirmed – EMarket</title></Helmet>
+      <Helmet><title>Order Confirmed — AUREM</title></Helmet>
       <div className="container-custom py-16 max-w-2xl">
         <div className="text-center mb-10">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">

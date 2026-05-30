@@ -63,7 +63,7 @@ export default function ProfilePage() {
 
   return (
     <>
-      <Helmet><title>My Profile – EMarket</title></Helmet>
+      <Helmet><title>My Profile — AUREM</title></Helmet>
       <div className="container-custom py-8 max-w-3xl">
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'My Profile' }]} />
         <h1 className="text-2xl font-bold text-gray-900 mb-8">My Profile</h1>

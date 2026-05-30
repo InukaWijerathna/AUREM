@@ -60,7 +60,7 @@ export default function CheckoutPage() {
 
   return (
     <>
-      <Helmet><title>Checkout – EMarket</title></Helmet>
+      <Helmet><title>Checkout — AUREM</title></Helmet>
       <div className="container-custom py-8">
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Cart', href: '/cart' }, { label: 'Checkout' }]} />
         <h1 className="text-2xl font-bold text-gray-900 mb-8">Checkout</h1>

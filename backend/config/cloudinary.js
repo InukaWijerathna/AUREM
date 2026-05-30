@@ -22,7 +22,7 @@ if (hasCloudinary) {
     _handleFile(req, file, cb) {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
-          folder: 'emarket',
+          folder: 'aurem',
           allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
           transformation: [{ width: 800, height: 800, crop: 'limit', quality: 'auto' }],
         },

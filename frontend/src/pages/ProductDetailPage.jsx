@@ -79,7 +79,7 @@ export default function ProductDetailPage() {
   return (
     <>
       <Helmet>
-        <title>{product.name} – EMarket</title>
+        <title>{product.name} — AUREM</title>
         <meta name="description" content={product.shortDescription || product.description?.substring(0, 160)} />
       </Helmet>
 

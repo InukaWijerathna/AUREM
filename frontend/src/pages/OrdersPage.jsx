@@ -13,7 +13,7 @@ export default function OrdersPage() {
 
   return (
     <>
-      <Helmet><title>My Orders – EMarket</title></Helmet>
+      <Helmet><title>My Orders — AUREM</title></Helmet>
       <div className="container-custom py-8">
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'My Orders' }]} />
         <h1 className="text-2xl font-bold text-gray-900 mb-8">My Orders</h1>

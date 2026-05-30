@@ -34,7 +34,7 @@ const register = asyncHandler(async (req, res) => {
   try {
     await sendEmail({
       to: user.email,
-      subject: 'Verify your EMarket account',
+      subject: 'Verify your AUREM account',
       html: emailTemplates.verification(user.name, verifyUrl),
     });
   } catch {
@@ -160,7 +160,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   try {
     await sendEmail({
       to: user.email,
-      subject: 'Password Reset OTP - EMarket',
+      subject: 'Password Reset OTP — AUREM',
       html: emailTemplates.passwordReset(user.name, otp),
     });
   } catch {

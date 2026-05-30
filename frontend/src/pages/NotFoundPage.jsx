@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 export default function NotFoundPage() {
   return (
     <>
-      <Helmet><title>404 – Page Not Found – EMarket</title></Helmet>
+      <Helmet><title>404 – Page Not Found — AUREM</title></Helmet>
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="text-center">
           <div className="text-8xl font-bold text-primary-200 mb-4">404</div>

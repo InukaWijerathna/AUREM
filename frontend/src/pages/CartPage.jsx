@@ -91,7 +91,7 @@ export default function CartPage() {
 
   return (
     <>
-      <Helmet><title>Cart – EMarket</title></Helmet>
+      <Helmet><title>Cart — AUREM</title></Helmet>
       <div className="container-custom py-8">
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Cart' }]} />
         <h1 className="text-2xl font-bold text-gray-900 mb-8">Shopping Cart ({items.length} items)</h1>

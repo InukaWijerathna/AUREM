@@ -9,7 +9,7 @@ export default function VerifyEmailPage() {
 
   return (
     <>
-      <Helmet><title>Verify Email – EMarket</title></Helmet>
+      <Helmet><title>Verify Email — AUREM</title></Helmet>
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="card p-10 max-w-md w-full text-center">
           {isLoading && <Loader text="Verifying your email..." />}

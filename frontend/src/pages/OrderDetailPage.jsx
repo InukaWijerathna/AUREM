@@ -31,7 +31,7 @@ export default function OrderDetailPage() {
 
   return (
     <>
-      <Helmet><title>Order Details – EMarket</title></Helmet>
+      <Helmet><title>Order Details — AUREM</title></Helmet>
       <div className="container-custom py-8">
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'My Orders', href: '/orders' }, { label: 'Order Details' }]} />
 

@@ -31,7 +31,7 @@ export default function WishlistPage() {
 
   return (
     <>
-      <Helmet><title>Wishlist – EMarket</title></Helmet>
+      <Helmet><title>Wishlist — AUREM</title></Helmet>
       <div className="container-custom py-8">
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Wishlist' }]} />
         <h1 className="text-2xl font-bold text-gray-900 mb-8">

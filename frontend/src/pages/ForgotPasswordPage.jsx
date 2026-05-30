@@ -20,7 +20,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <>
-      <Helmet><title>Forgot Password – EMarket</title></Helmet>
+      <Helmet><title>Forgot Password — AUREM</title></Helmet>
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
