@@ -2,8 +2,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { clearCredentials } from '../authSlice';
 import { clearCartState } from '../cartSlice';
 
+// In dev: VITE_API_URL is unset → '/api' is caught by the Vite proxy → localhost:5000
+// In prod: VITE_API_URL = 'https://your-backend.vercel.app' → full cross-origin URL
 const baseQuery = fetchBaseQuery({
-  baseUrl: '/api',
+  baseUrl: `${import.meta.env.VITE_API_URL ?? ''}/api`,
   credentials: 'include',
 });
 

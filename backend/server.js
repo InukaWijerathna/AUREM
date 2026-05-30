@@ -47,8 +47,11 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Serve locally uploaded images (used when Cloudinary is not configured)
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Serve locally uploaded images only in non-serverless environments.
+// On Vercel the filesystem is read-only; uploads go to /tmp and aren't publicly served.
+if (!process.env.VERCEL) {
+  app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+}
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
@@ -66,9 +69,13 @@ app.get('/api/health', (req, res) => res.json({ status: 'OK', env: process.env.N
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () =>
-  console.log(`Server running on port ${PORT} in ${process.env.NODE_ENV} mode`)
-);
+// Vercel runs Express as a serverless function and manages ports itself.
+// Only bind a port when running locally.
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () =>
+    console.log(`Server running on port ${PORT} in ${process.env.NODE_ENV} mode`)
+  );
+}
 
 module.exports = app;

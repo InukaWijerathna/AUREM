@@ -48,8 +48,11 @@ if (hasCloudinary) {
     },
   });
 } else {
-  // Local disk storage fallback
-  const uploadDir = path.join(__dirname, '..', 'uploads');
+  // Local disk storage fallback.
+  // Vercel's filesystem is read-only — use /tmp instead.
+  const uploadDir = process.env.VERCEL
+    ? '/tmp/aurem-uploads'
+    : path.join(__dirname, '..', 'uploads');
   if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
   const diskStorage = multer.diskStorage({
