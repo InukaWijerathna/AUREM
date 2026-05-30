@@ -4,56 +4,116 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+    @apply bg-champagne text-espresso font-sans antialiased;
+    font-weight: 400;
   }
   * {
     @apply box-border;
   }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-light;
+  }
 }
 
 @layer components {
+  /* Buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center font-sans font-medium transition-all duration-200
+           focus:outline-none focus:ring-1 focus:ring-offset-1
+           disabled:opacity-50 disabled:cursor-not-allowed
+           tracking-widest text-[9px] uppercase;
   }
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+    @apply btn bg-primary-600 text-champagne border border-primary-600
+           hover:bg-primary-700 hover:border-primary-700 focus:ring-primary-600
+           px-7 py-3;
   }
   .btn-secondary {
-    @apply btn bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-primary-500;
+    @apply btn bg-transparent text-primary-600 border border-primary-600
+           hover:bg-primary-600 hover:text-champagne focus:ring-primary-600
+           px-7 py-3;
   }
   .btn-danger {
-    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+    @apply btn bg-claret text-champagne border border-claret
+           hover:opacity-90 focus:ring-claret
+           px-7 py-3;
   }
+  .btn-sm {
+    @apply px-5 py-2 text-[8px];
+  }
+
+  /* Inputs */
   .input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all;
+    @apply w-full px-3 py-2.5 bg-transparent border border-sand-gold
+           font-sans font-normal text-sm text-espresso placeholder-mid-gold
+           focus:outline-none focus:border-primary-600 focus:ring-0
+           transition-colors rounded-none;
   }
   .input-error {
-    @apply border-red-400 focus:ring-red-500;
+    @apply border-claret focus:border-claret;
   }
+
+  /* Cards */
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-100;
+    @apply bg-parchment border border-sand-gold/60 rounded-none;
   }
+
+  /* Badges */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-0.5 text-[8px]
+           tracking-widest uppercase font-sans font-light;
   }
+  .badge-gold {
+    @apply badge bg-primary-600 text-champagne border border-primary-600;
+  }
+  .badge-outline {
+    @apply badge bg-transparent text-mid-gold border border-sand-gold;
+  }
+  .badge-claret {
+    @apply badge bg-claret text-champagne border border-claret;
+  }
+
+  /* Layout */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  /* Section label (small caps overline) */
+  .sec-label {
+    @apply text-xs font-sans font-semibold tracking-[0.22em] text-mid-gold uppercase mb-4;
+  }
+
+  /* Display heading */
+  .display-heading {
+    @apply font-display font-light text-espresso leading-tight tracking-wide;
+  }
+
+  /* Divider */
+  .divider-gold {
+    @apply border-t border-sand-gold/60;
+  }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { @apply bg-gray-100; }
-::-webkit-scrollbar-thumb { @apply bg-gray-400 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-gray-500; }
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #EDE0C4; }
+::-webkit-scrollbar-thumb { background: #D9C89A; }
+::-webkit-scrollbar-thumb:hover { background: #7A5C28; }
 
-/* Skeleton animation */
+/* Skeleton shimmer */
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
 }
 .skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, #EDE0C4 25%, #E5D8C0 50%, #EDE0C4 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
+}
+
+/* Cormorant italic helper */
+.italic-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
 }

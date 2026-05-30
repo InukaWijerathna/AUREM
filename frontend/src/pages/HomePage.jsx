@@ -1,124 +1,179 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Watch, Gem, Briefcase, Glasses, Sparkles, Gift } from 'lucide-react';
 import { useGetFeaturedProductsQuery } from '../redux/api/productApi';
 import { useGetCategoriesQuery } from '../redux/api/categoryApi';
 import ProductGrid from '../components/products/ProductGrid';
 
-const HERO_FEATURES = [
-  { icon: '🚚', title: 'Free Shipping', desc: 'On orders over $100' },
-  { icon: '🔒', title: 'Secure Payments', desc: 'SSL encrypted checkout' },
-  { icon: '↩️', title: 'Easy Returns', desc: '30-day return policy' },
-  { icon: '🎧', title: '24/7 Support', desc: 'We\'re here to help' },
+const CATEGORY_ICONS = {
+  timepieces:     Watch,
+  jewellery:      Gem,
+  'leather-goods': Briefcase,
+  accessories:    Glasses,
+  fragrance:      Sparkles,
+  gifting:        Gift,
+};
+
+const PILLARS = [
+  { title: 'Authenticated',  desc: 'Every piece verified by our in-house experts.' },
+  { title: 'Discreet',       desc: 'Unmarked, insured delivery to your door.' },
+  { title: 'Curated',        desc: 'A considered edit — nothing superfluous.' },
+  { title: 'Timeless',       desc: 'Objects that outlast fashion.' },
 ];
 
 export default function HomePage() {
   const { data: featuredData, isLoading } = useGetFeaturedProductsQuery();
-  const { data: catData } = useGetCategoriesQuery();
+  const { data: catData }                 = useGetCategoriesQuery();
 
   return (
     <>
       <Helmet>
-        <title>EMarket – Shop Electronics, Clothing, Books & More</title>
-        <meta name="description" content="Discover thousands of products at great prices. Shop electronics, clothing, books, home goods and more." />
+        <title>AUREM — Curated Luxury</title>
+        <meta name="description" content="A curated edit of the world's finest timepieces, jewellery, leather goods, accessories, fragrance and gifting." />
       </Helmet>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-        <div className="container-custom py-20 flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-1 space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Shop Smarter,<br />
-              <span className="text-primary-200">Live Better</span>
+      {/* ── Hero ──────────────────────────────────────────────────── */}
+      <section className="bg-champagne border-b border-sand-gold/40">
+        <div className="container-custom py-24 md:py-32 flex flex-col md:flex-row items-center gap-12">
+
+          {/* Copy */}
+          <div className="flex-1 space-y-8">
+            <p className="sec-label">New Arrivals · Summer 2025</p>
+            <h1 className="font-display font-light text-5xl md:text-7xl text-espresso leading-[1.05] tracking-wide">
+              Objects of<br />
+              <em className="italic-display text-primary-600">Enduring</em><br />
+              Desire
             </h1>
-            <p className="text-primary-100 text-lg max-w-md">
-              Discover thousands of products across electronics, fashion, books, and more. Quality guaranteed.
+            <p className="font-sans text-base text-mid-gold leading-relaxed max-w-sm">
+              Rare timepieces, signed jewellery, and hand-crafted leather goods — sourced from the world's most celebrated ateliers.
             </p>
-            <div className="flex gap-4 flex-wrap">
-              <Link to="/products" className="bg-white text-primary-700 font-semibold px-8 py-3 rounded-xl hover:bg-primary-50 transition-colors">
-                Shop Now
+            <div className="flex items-center gap-4 flex-wrap pt-2">
+              <Link to="/products" className="btn-primary">
+                Explore Collection
               </Link>
-              <Link to="/products?isFeatured=true" className="border-2 border-white text-white font-semibold px-8 py-3 rounded-xl hover:bg-primary-700 transition-colors">
-                Featured Deals
+              <Link to="/products?isFeatured=true" className="btn-secondary">
+                Featured Pieces
               </Link>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-primary-200">
-              <span>✓ 10,000+ products</span>
-              <span>✓ Fast delivery</span>
-              <span>✓ Trusted by 50k+ customers</span>
             </div>
           </div>
-          <div className="hidden md:block flex-1 text-center">
-            <div className="text-8xl">🛍️</div>
+
+          {/* Decorative aside */}
+          <div className="hidden md:flex flex-col items-end gap-3 shrink-0 w-64">
+            <div className="w-full h-72 bg-parchment border border-sand-gold/60 flex items-center justify-center">
+              <span className="font-display font-light text-6xl tracking-[0.38em] text-sand-gold">A</span>
+            </div>
+            <p className="text-[8px] tracking-[0.28em] text-mid-gold uppercase font-sans">Curated Luxury · Est. 2024</p>
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="container-custom py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {HERO_FEATURES.map((f) => (
-              <div key={f.title} className="flex items-center gap-3">
-                <span className="text-3xl">{f.icon}</span>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">{f.title}</p>
-                  <p className="text-gray-500 text-xs">{f.desc}</p>
-                </div>
+      {/* ── Four pillars ──────────────────────────────────────────── */}
+      <section className="bg-parchment border-b border-sand-gold/40">
+        <div className="container-custom py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-sand-gold/40">
+            {PILLARS.map(({ title, desc }) => (
+              <div key={title} className="px-6 first:pl-0 last:pr-0 text-center md:text-left py-4 md:py-0">
+                <p className="font-display text-base text-espresso mb-1">{title}</p>
+                <p className="text-sm font-sans text-mid-gold leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Categories */}
+      {/* ── Shop by Category ──────────────────────────────────────── */}
       {catData?.categories?.length > 0 && (
-        <section className="container-custom py-12">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Shop by Category</h2>
-            <Link to="/products" className="text-primary-600 text-sm font-medium hover:underline">View all</Link>
+        <section className="container-custom py-16">
+          <div className="flex items-baseline justify-between mb-8">
+            <div>
+              <p className="sec-label">Discover</p>
+              <h2 className="font-display font-light text-3xl text-espresso tracking-wide">Shop by Category</h2>
+            </div>
+            <Link to="/products" className="text-xs tracking-wider uppercase text-primary-600 hover:text-primary-700 transition-colors font-sans font-semibold border-b border-primary-600 pb-px">
+              View All
+            </Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {catData.categories.map((cat) => (
-              <Link
-                key={cat._id}
-                to={`/products?category=${cat._id}`}
-                className="card p-4 text-center hover:shadow-md hover:border-primary-200 border border-transparent transition-all group"
-              >
-                {cat.image?.url ? (
-                  <img src={cat.image.url} alt={cat.name} className="w-16 h-16 object-cover rounded-lg mx-auto mb-3" />
-                ) : (
-                  <div className="w-16 h-16 rounded-lg bg-primary-100 flex items-center justify-center mx-auto mb-3 text-2xl">
-                    🏷️
-                  </div>
-                )}
-                <p className="text-sm font-medium text-gray-900 group-hover:text-primary-600 transition-colors">
-                  {cat.name}
-                </p>
-              </Link>
-            ))}
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            {catData.categories.map((cat) => {
+              const Icon = CATEGORY_ICONS[cat.slug] || Gift;
+              return (
+                <Link
+                  key={cat._id}
+                  to={`/products?category=${cat._id}`}
+                  className="card p-5 text-center hover:border-primary-600/40 hover:shadow-sm transition-all group"
+                >
+                  {cat.image?.url ? (
+                    <img src={cat.image.url} alt={cat.name} referrerPolicy="no-referrer" className="w-12 h-12 object-cover mx-auto mb-3 border border-sand-gold/40" />
+                  ) : (
+                    <div className="flex justify-center mb-3">
+                      <Icon className="w-6 h-6 text-sand-gold group-hover:text-primary-600 transition-colors" strokeWidth={1} />
+                    </div>
+                  )}
+                  <p className="text-xs tracking-wider uppercase font-sans font-medium text-espresso group-hover:text-primary-600 transition-colors">
+                    {cat.name}
+                  </p>
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}
 
-      {/* Featured Products */}
-      <section className="container-custom py-12">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Featured Products</h2>
-          <Link to="/products?isFeatured=true" className="text-primary-600 text-sm font-medium hover:underline">View all</Link>
+      {/* ── Featured Products ─────────────────────────────────────── */}
+      <section className="bg-parchment border-y border-sand-gold/40 py-16">
+        <div className="container-custom">
+          <div className="flex items-baseline justify-between mb-8">
+            <div>
+              <p className="sec-label">Handpicked</p>
+              <h2 className="font-display font-light text-3xl text-espresso tracking-wide">Featured Pieces</h2>
+            </div>
+            <Link to="/products?isFeatured=true" className="text-xs tracking-wider uppercase text-primary-600 hover:text-primary-700 transition-colors font-sans font-semibold border-b border-primary-600 pb-px">
+              View All
+            </Link>
+          </div>
+          <ProductGrid products={featuredData?.products} isLoading={isLoading} count={8} />
         </div>
-        <ProductGrid products={featuredData?.products} isLoading={isLoading} count={8} />
       </section>
 
-      {/* Promo Banner */}
-      <section className="container-custom py-8">
-        <div className="bg-gradient-to-r from-orange-400 to-pink-500 rounded-2xl p-8 md:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* ── Editorial banner ─────────────────────────────────────── */}
+      <section className="container-custom py-16">
+        <div className="bg-espresso border border-sand-gold/20 px-10 md:px-16 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-2">First Order Discount!</h3>
-            <p className="text-orange-100">Use code <strong>WELCOME10</strong> for 10% off your first purchase</p>
+            <p className="sec-label" style={{ color: '#A8926A' }}>Welcome Offer</p>
+            <h3 className="font-display font-light text-3xl text-champagne leading-tight">
+              Your First Acquisition
+            </h3>
+            <p className="font-sans text-base text-mid-gold mt-2">
+              Use code <span className="text-primary-300 tracking-widest font-medium">WELCOME10</span> for 10% off your first order.
+            </p>
           </div>
-          <Link to="/products" className="bg-white text-orange-500 font-bold px-8 py-3 rounded-xl hover:bg-orange-50 transition-colors shrink-0">
-            Shop Now
+          <Link
+            to="/products"
+            className="btn-secondary shrink-0"
+            style={{ borderColor: '#D9C89A', color: '#D9C89A' }}
+          >
+            Begin Exploring
           </Link>
+        </div>
+      </section>
+
+      {/* ── Brand values strip ───────────────────────────────────── */}
+      <section className="bg-parchment border-t border-sand-gold/40">
+        <div className="container-custom py-8">
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-3">
+            {[
+              'Certified Authentic',
+              'Complimentary Gift Wrapping',
+              'White-Glove Delivery',
+              '30-Day Returns',
+              'Lifetime Service',
+            ].map((v) => (
+              <span key={v} className="text-xs tracking-[0.15em] uppercase font-sans font-medium text-mid-gold flex items-center gap-2">
+                <span className="text-sand-gold">—</span> {v}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
     </>

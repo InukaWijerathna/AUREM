@@ -1,3 +1,5 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 export default function Pagination({ page, pages, onPageChange }) {
   if (pages <= 1) return null;
 
@@ -10,22 +12,33 @@ export default function Pagination({ page, pages, onPageChange }) {
     return nums;
   };
 
+  const btnBase =
+    'min-w-[2.5rem] h-10 flex items-center justify-center text-xs font-sans font-medium border transition-colors';
+
   return (
-    <div className="flex items-center justify-center gap-1 mt-8">
+    <div className="flex items-center justify-center gap-1 mt-12">
+      {/* Prev */}
       <button
         onClick={() => onPageChange(page - 1)}
         disabled={page === 1}
-        className="p-2 rounded-lg border border-gray-300 disabled:opacity-40 hover:bg-gray-50 transition-colors"
+        className={`${btnBase} px-3 border-sand-gold/60 text-mid-gold hover:border-primary-600 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed`}
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
+        <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
       </button>
 
       {page > 3 && (
         <>
-          <button onClick={() => onPageChange(1)} className="px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 text-sm">1</button>
-          {page > 4 && <span className="px-2 text-gray-400">…</span>}
+          <button
+            onClick={() => onPageChange(1)}
+            className={`${btnBase} border-sand-gold/60 text-mid-gold hover:border-primary-600 hover:text-primary-600`}
+          >
+            1
+          </button>
+          {page > 4 && (
+            <span className="min-w-[2.5rem] h-10 flex items-center justify-center text-xs text-mid-gold">
+              …
+            </span>
+          )}
         </>
       )}
 
@@ -33,10 +46,10 @@ export default function Pagination({ page, pages, onPageChange }) {
         <button
           key={num}
           onClick={() => onPageChange(num)}
-          className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
+          className={`${btnBase} ${
             num === page
-              ? 'bg-primary-600 text-white border-primary-600'
-              : 'border-gray-300 hover:bg-gray-50'
+              ? 'bg-primary-600 text-champagne border-primary-600'
+              : 'border-sand-gold/60 text-mid-gold hover:border-primary-600 hover:text-primary-600'
           }`}
         >
           {num}
@@ -45,19 +58,27 @@ export default function Pagination({ page, pages, onPageChange }) {
 
       {page < pages - 2 && (
         <>
-          {page < pages - 3 && <span className="px-2 text-gray-400">…</span>}
-          <button onClick={() => onPageChange(pages)} className="px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 text-sm">{pages}</button>
+          {page < pages - 3 && (
+            <span className="min-w-[2.5rem] h-10 flex items-center justify-center text-xs text-mid-gold">
+              …
+            </span>
+          )}
+          <button
+            onClick={() => onPageChange(pages)}
+            className={`${btnBase} border-sand-gold/60 text-mid-gold hover:border-primary-600 hover:text-primary-600`}
+          >
+            {pages}
+          </button>
         </>
       )}
 
+      {/* Next */}
       <button
         onClick={() => onPageChange(page + 1)}
         disabled={page === pages}
-        className="p-2 rounded-lg border border-gray-300 disabled:opacity-40 hover:bg-gray-50 transition-colors"
+        className={`${btnBase} px-3 border-sand-gold/60 text-mid-gold hover:border-primary-600 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed`}
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+        <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
       </button>
     </div>
   );
