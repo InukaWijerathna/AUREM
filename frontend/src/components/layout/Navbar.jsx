@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import {
@@ -52,13 +53,20 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 gap-6">
 
           {/* Logo */}
-          <Link to="/" className="shrink-0 flex flex-col items-center leading-none">
-            <span className="font-display font-light text-2xl tracking-[0.38em] text-primary-600 leading-none">
-              AUREM
-            </span>
-            <span className="text-[10px] tracking-[0.28em] text-mid-gold uppercase mt-0.5">
-              Curated Luxury
-            </span>
+          <Link to="/" className="shrink-0 flex items-center gap-2.5">
+            <img
+              src={logo}
+              alt="AUREM"
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <div className="flex flex-col leading-none">
+              <span className="font-display font-light text-xl tracking-[0.32em] text-primary-600">
+                AUREM
+              </span>
+              <span className="text-[10px] tracking-[0.22em] text-mid-gold uppercase mt-0.5">
+                Curated Luxury
+              </span>
+            </div>
           </Link>
 
           {/* Search — desktop */}

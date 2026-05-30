@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const SHOP_LINKS = [
   { label: 'Timepieces',    slug: 'timepieces' },
@@ -60,13 +61,20 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="md:col-span-1">
-            <Link to="/" className="flex flex-col items-start leading-none mb-5">
-              <span className="font-display font-light text-2xl tracking-[0.38em] text-primary-300 leading-none">
-                AUREM
-              </span>
-              <span className="text-[10px] tracking-[0.25em] text-mid-gold uppercase mt-1">
-                Curated Luxury · Est. 2024
-              </span>
+            <Link to="/" className="flex items-center gap-3 mb-5">
+              <img
+                src={logo}
+                alt="AUREM"
+                className="w-12 h-12 rounded-full object-cover"
+              />
+              <div className="flex flex-col leading-none">
+                <span className="font-display font-light text-xl tracking-[0.32em] text-primary-300">
+                  AUREM
+                </span>
+                <span className="text-[10px] tracking-[0.22em] text-mid-gold uppercase mt-1">
+                  Curated Luxury · Est. 2024
+                </span>
+              </div>
             </Link>
             <p className="text-sm font-sans text-gray-400 leading-relaxed max-w-[220px]">
               A curated edit of the world's finest timepieces, jewellery, leather goods, and rare objects of desire.
