@@ -39,7 +39,7 @@ export default function HomePage() {
 
           {/* Copy */}
           <div className="flex-1 space-y-8">
-            <p className="sec-label">New Arrivals · Summer 2025</p>
+            <p className="sec-label">New Arrivals · Summer 2026</p>
             <h1 className="font-display font-light text-5xl md:text-7xl text-espresso leading-[1.05] tracking-wide">
               Objects of<br />
               <em className="italic-display text-primary-600">Enduring</em><br />
