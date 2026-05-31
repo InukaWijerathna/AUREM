@@ -100,12 +100,12 @@ export default function CartPage() {
           {/* Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={`${item.product?._id}-${JSON.stringify(item.variant)}`} className="card p-5 flex gap-4">
-                <Link to={`/products/${item.product?.slug}`}>
+              <div key={`${item.product?._id}-${JSON.stringify(item.variant)}`} className="card p-4 sm:p-5 flex gap-3 sm:gap-4">
+                <Link to={`/products/${item.product?.slug}`} className="shrink-0">
                   <img
                     src={item.product?.images?.[0]?.url}
                     alt={item.product?.name}
-                    className="w-24 h-24 object-cover rounded-lg bg-gray-100"
+                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg bg-gray-100"
                   />
                 </Link>
                 <div className="flex-1 min-w-0">
@@ -117,7 +117,7 @@ export default function CartPage() {
                   )}
                   <p className="text-primary-600 font-bold mt-1">{formatCurrency(item.price)}</p>
 
-                  <div className="flex items-center justify-between mt-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mt-3">
                     <div className="flex items-center border border-gray-200 rounded-lg">
                       <button onClick={() => handleQty(item.product?._id, item.quantity - 1, item.variant)} className="px-3 py-1.5 hover:bg-gray-50" disabled={item.quantity <= 1}>
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>

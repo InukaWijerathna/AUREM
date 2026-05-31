@@ -1,0 +1,69 @@
+services:
+
+  # ── MongoDB (local) ──────────────────────────────────────────────────────────
+  # Comment this service out if you are using MongoDB Atlas and set MONGO_URI
+  # in backend/.env to your Atlas connection string instead.
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - aurem-net
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand('ping').ok"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  # ── Backend (Express API) ────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      NODE_ENV: production
+      # When using the local mongo service above, override MONGO_URI like so:
+      # MONGO_URI: mongodb://mongo:27017/aurem
+      CLIENT_URL: http://localhost
+    ports:
+      - "5000:5000"
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - aurem-net
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ── Frontend (React + Nginx) ─────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - aurem-net
+
+volumes:
+  mongo_data:
+  uploads_data:
+
+networks:
+  aurem-net:
+    driver: bridge

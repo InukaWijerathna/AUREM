@@ -70,9 +70,9 @@ export default function HomePage() {
       {/* ── Four pillars ──────────────────────────────────────────── */}
       <section className="bg-parchment border-b border-sand-gold/40">
         <div className="container-custom py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-sand-gold/40">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x divide-sand-gold/40">
             {PILLARS.map(({ title, desc }) => (
-              <div key={title} className="px-6 first:pl-0 last:pr-0 text-center md:text-left py-4 md:py-0">
+              <div key={title} className="md:px-6 md:first:pl-0 md:last:pr-0 text-center md:text-left py-2 md:py-0">
                 <p className="font-display text-base text-espresso mb-1">{title}</p>
                 <p className="text-sm font-sans text-mid-gold leading-relaxed">{desc}</p>
               </div>

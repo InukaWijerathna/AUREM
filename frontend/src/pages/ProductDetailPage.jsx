@@ -91,7 +91,7 @@ export default function ProductDetailPage() {
           { label: product.name },
         ]} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Gallery */}
           <ImageGallery images={product.images} name={product.name} />
 
@@ -99,7 +99,7 @@ export default function ProductDetailPage() {
           <div className="space-y-5">
             <div>
               <p className="text-sm text-gray-500 mb-1">{product.brand}</p>
-              <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{product.name}</h1>
             </div>
 
             <div className="flex items-center gap-3">
@@ -111,7 +111,7 @@ export default function ProductDetailPage() {
             </div>
 
             <div className="flex items-baseline gap-3">
-              <span className="text-3xl font-bold text-gray-900">{formatCurrency(effectivePrice)}</span>
+              <span className="text-2xl md:text-3xl font-bold text-gray-900">{formatCurrency(effectivePrice)}</span>
               {discountPercent > 0 && (
                 <>
                   <span className="text-xl text-gray-400 line-through">{formatCurrency(product.price)}</span>

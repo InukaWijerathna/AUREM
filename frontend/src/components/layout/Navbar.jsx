@@ -172,7 +172,7 @@ export default function Navbar() {
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-2 ml-1">
+              <div className="hidden sm:flex items-center gap-2 ml-1">
                 <Link to="/login"    className="btn-secondary btn-sm">Sign In</Link>
                 <Link to="/register" className="btn-primary  btn-sm">Join</Link>
               </div>
@@ -235,11 +235,16 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
-            {isLoggedIn && (
+            {isLoggedIn ? (
               <>
                 <Link to="/orders"   className="py-3 text-xs tracking-wider uppercase text-espresso hover:text-primary-600 transition-colors font-sans font-medium mt-2" onClick={() => setMenuOpen(false)}>My Orders</Link>
                 <Link to="/profile"  className="py-3 text-xs tracking-wider uppercase text-espresso hover:text-primary-600 transition-colors font-sans font-medium" onClick={() => setMenuOpen(false)}>Profile</Link>
               </>
+            ) : (
+              <div className="flex items-center gap-3 pt-3 mt-1 border-t border-sand-gold/30 sm:hidden">
+                <Link to="/login"    className="btn-secondary btn-sm flex-1 text-center" onClick={() => setMenuOpen(false)}>Sign In</Link>
+                <Link to="/register" className="btn-primary  btn-sm flex-1 text-center" onClick={() => setMenuOpen(false)}>Join</Link>
+              </div>
             )}
           </nav>
         </div>
