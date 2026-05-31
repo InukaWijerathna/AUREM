@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import logo from '../assets/logo.png';
 import { Watch, Gem, Briefcase, Glasses, Sparkles, Gift } from 'lucide-react';
 import { useGetFeaturedProductsQuery } from '../redux/api/productApi';
 import { useGetCategoriesQuery } from '../redux/api/categoryApi';
@@ -57,11 +58,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Decorative aside */}
-          <div className="hidden md:flex flex-col items-end gap-3 shrink-0 w-64">
-            <div className="w-full h-72 bg-parchment border border-sand-gold/60 flex items-center justify-center">
-              <span className="font-display font-light text-6xl tracking-[0.38em] text-sand-gold">A</span>
-            </div>
+          {/* Hero image */}
+          <div className="hidden md:flex flex-col items-end gap-3 shrink-0">
+            <img src={logo} alt="AUREM" className="w-80 h-80 object-contain" />
             <p className="text-[8px] tracking-[0.28em] text-mid-gold uppercase font-sans">Curated Luxury · Est. 2024</p>
           </div>
         </div>
