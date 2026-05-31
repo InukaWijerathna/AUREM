@@ -35,7 +35,7 @@ export default function HomePage() {
 
       {/* ── Hero ──────────────────────────────────────────────────── */}
       <section className="bg-champagne border-b border-sand-gold/40">
-        <div className="container-custom pt-0 pb-24 md:pb-32 flex flex-col md:flex-row items-center gap-12">
+        <div className="container-custom pt-8 pb-24 md:pb-32 flex flex-col md:flex-row items-center gap-12">
 
           {/* Copy */}
           <div className="flex-1 space-y-8">
@@ -59,8 +59,8 @@ export default function HomePage() {
           </div>
 
           {/* Hero image */}
-          <div className="hidden md:flex flex-col items-end gap-3 shrink-0">
-            <img src={logo} alt="AUREM" className="w-80 h-80 object-contain" />
+          <div className="hidden md:flex flex-col items-end gap-3 shrink-0 pr-8">
+            <img src={logo} alt="AUREM" className="w-96 h-96 object-contain" />
             <p className="text-[8px] tracking-[0.28em] text-mid-gold uppercase font-sans">Curated Luxury · Est. 2024</p>
           </div>
         </div>
