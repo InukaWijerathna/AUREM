@@ -27,7 +27,7 @@ export default function RegisterPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <Link to="/" className="text-3xl font-bold text-primary-600">E<span className="text-gray-900">Market</span></Link>
+            <Link to="/" className="font-display font-light text-3xl tracking-[0.32em] text-primary-600">AUREM</Link>
             <h1 className="text-2xl font-bold text-gray-900 mt-4">Create an account</h1>
             <p className="text-gray-500 mt-1">Start shopping today</p>
           </div>
