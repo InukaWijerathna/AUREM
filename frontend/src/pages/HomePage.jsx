@@ -35,7 +35,7 @@ export default function HomePage() {
 
       {/* ── Hero ──────────────────────────────────────────────────── */}
       <section className="bg-champagne border-b border-sand-gold/40">
-        <div className="container-custom py-24 md:py-32 flex flex-col md:flex-row items-center gap-12">
+        <div className="container-custom pt-0 pb-24 md:pb-32 flex flex-col md:flex-row items-center gap-12">
 
           {/* Copy */}
           <div className="flex-1 space-y-8">
