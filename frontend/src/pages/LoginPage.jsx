@@ -36,18 +36,18 @@ export default function LoginPage() {
   return (
     <>
       <Helmet><title>Login — AUREM</title></Helmet>
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-champagne flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <Link to="/" className="font-display font-light text-3xl tracking-[0.32em] text-primary-600">AUREM</Link>
-            <h1 className="text-2xl font-bold text-gray-900 mt-4">Welcome back</h1>
-            <p className="text-gray-500 mt-1">Sign in to your account</p>
+            <h1 className="font-display font-light text-2xl text-espresso mt-4">Welcome back</h1>
+            <p className="text-mid-gold text-sm mt-1">Sign in to your account</p>
           </div>
 
           <div className="card p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-espresso mb-1">Email</label>
                 <input
                   type="email"
                   {...register('email', { required: 'Email is required', pattern: { value: /\S+@\S+\.\S+/, message: 'Invalid email' } })}
@@ -59,7 +59,7 @@ export default function LoginPage() {
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-sm font-medium text-gray-700">Password</label>
+                  <label className="block text-sm font-medium text-espresso">Password</label>
                   <Link to="/forgot-password" className="text-xs text-primary-600 hover:underline">Forgot password?</Link>
                 </div>
                 <input
@@ -76,7 +76,7 @@ export default function LoginPage() {
               </button>
             </form>
 
-            <p className="text-center text-sm text-gray-600 mt-6">
+            <p className="text-center text-sm text-mid-gold mt-6">
               Don't have an account?{' '}
               <Link to="/register" className="text-primary-600 font-medium hover:underline">Create one</Link>
             </p>
