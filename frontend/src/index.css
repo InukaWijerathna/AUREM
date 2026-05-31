@@ -75,7 +75,7 @@
 
   /* Layout */
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-6 sm:px-10 lg:px-16;
   }
 
   /* Section label (small caps overline) */
